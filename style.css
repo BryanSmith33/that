@@ -1,3 +1,15 @@
+img
+{
+    height: 190px;
+    width: 320px;
+    position: relative;
+    display: block;
+    margin-top: 2.5%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
 /*Login*/
 .login-background
 {
@@ -17,7 +29,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 1;
 }
 
 p.form-title
@@ -27,7 +39,7 @@ p.form-title
     font-weight: 600;
     text-align: center;
     color: #405040;
-    margin-top: 15%;
+    margin-top: 1%;
     text-transform: uppercase;
     letter-spacing: 4px;
 }
@@ -47,13 +59,11 @@ form.login input[type="text"], form.login input[type="password"], form.login inp
     border: 0;
     border-bottom: 1px solid #FFFFFF;
     outline: 0;
-    font-color:blue;
     font-style: italic;
     font-size: 17px;
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 5px;
-    outline: 0;
 }
 
 
@@ -66,7 +76,6 @@ form.login input[type="submit"]
     margin-top: 16px;
     outline: 0;
     cursor: pointer;
-    letter-spacing: 1px;
     background-color: #194719;
     letter-spacing: 2px;
 }
@@ -122,6 +131,78 @@ form.login a:hover
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 3;
     display: none;
 }
+
+/*Modal*/
+
+h4.modal-title, .modal-body h1
+{
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color: #405040;
+    margin-top: 1%;
+    text-transform: uppercase;
+    letter-spacing: 4px;    
+}
+
+.modal-body input[type="submit"]
+{
+    width: 22%;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    outline: 0;
+    cursor: pointer;
+    background-color: #194719;
+    margin-left: 17.5%;
+}
+
+.modal-body input[type="submit"]:hover
+{
+    transition:0.5s ease;
+    background-color: #B3B9B3;
+    color: #194719;
+}
+
+.modal-footer button[type="button"], .modal-body button[type="button"]
+{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+    background-color: #194719;
+    color: white;
+}
+
+.modal-footer button[type="button"]:hover, .modal-body button[type="button"]:hover
+{
+    transition:0.5s ease;
+    background-color: #B3B9B3;
+    color: #194719;
+}
+
+.modal input[type="text"], .modal input[type="password"],.modal input[type="email"], .modal input[type="placeholder"] 
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #B3B9B3;
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+
+
+
+
