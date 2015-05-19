@@ -161,7 +161,8 @@ h4.modal-title, .modal-body h1
     margin-left: 17.5%;
 }
 
-.modal-body input[type="submit"]:hover
+.modal-body input[type="submit"]:hover, .modal-footer button[type="button"]:hover, .modal-body button[type="button"]:hover
+
 {
     transition:0.5s ease;
     background-color: #B3B9B3;
@@ -178,13 +179,6 @@ h4.modal-title, .modal-body h1
     letter-spacing: 1px;
     background-color: #194719;
     color: white;
-}
-
-.modal-footer button[type="button"]:hover, .modal-body button[type="button"]:hover
-{
-    transition:0.5s ease;
-    background-color: #B3B9B3;
-    color: #194719;
 }
 
 .modal input[type="text"], .modal input[type="password"],.modal input[type="email"], .modal input[type="placeholder"] 
