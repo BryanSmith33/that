@@ -2,7 +2,7 @@
   "name": "personalProject",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -19,7 +19,6 @@
   "homepage": "https://github.com/BryanSmith33/that",
   "dependencies": {
     "body-parser": "^1.12.4",
-    "cors": "^2.6.0",
     "express": "^4.12.4",
     "mongoose": "^4.0.3"
   }

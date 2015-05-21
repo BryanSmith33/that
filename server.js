@@ -1,34 +1,46 @@
+var mongoose = require('mongoose');
 var express = require('express');
 var bodyParser = require('body-parser');
-var cors = require('cors');
-var mongoose = require('mongoose');
 
-//controllers
+var blogger = require('./models/blogger');
+var user = require('./models/user');
 
-//express
+
+mongoose.connect('mongodb://localhost/personalProject');
+
+
 var app = express();
-
-//express middleware
+app.use(express.static(__dirname+"/public"));
 app.use(bodyParser.json());
-app.use(cors());
 
-//endpoints
-app.post('/sighting', SightingCtrl.create);
-app.get('/sighting', SightingCtrl.read);
-app.put('/sighting/:id', SightingCtrl.update);
-app.delete('/sighting/:id', SightingCtrl.delete);
-
-
-
-//connections
-var port = 9001;
-var mongoUri = 'mongodb://localhost:27017/';
-
-mongoose.connect(mongoUri);
-mongoose.connection.once('open', function(){
-	console.log('connected to mongoDB at:', mongoUri);
+app.post('/api/users', function(req, res) {
+	var user = new User(req.body);
+	user.save(function(err, new_user) {
+		if (err) {
+			console.log("can't create user", err);
+		}
+		res.json(new_user);
+	});
 });
 
-app.listen(port, function(){
-	console.log('listening on port:', port)
+app.get('/api/user', function(req, res) {
+	User
+	.find()
+	.exec().then(function(users) {
+		return res.json(users);
+	});
 });
+
+app.delete('/api/user/:userId', function(req, res) {
+	User.remove({ _id: req.params.userId }, function(err) {
+		if (err) {
+			console.log("can't delete user", err);
+		}
+		res.status(200).end();
+	});
+});
+
+
+
+var port = 9891;
+console.log('listening on port ' + port);
