@@ -13,7 +13,7 @@ img
 /*Login*/
 .login-background
 {
-	background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
     top: 0;
     left: 0;
@@ -206,8 +206,3 @@ h4.modal-title, .modal-body h1
     letter-spacing: 1px;
     margin-bottom: 5px;
 }
-
-
-
-
-

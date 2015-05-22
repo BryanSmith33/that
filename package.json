@@ -20,6 +20,10 @@
   "dependencies": {
     "body-parser": "^1.12.4",
     "express": "^4.12.4",
-    "mongoose": "^4.0.3"
+    "express-session": "^1.11.2",
+    "mongoose": "^4.0.3",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "session": "^0.1.0"
   }
 }

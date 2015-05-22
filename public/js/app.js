@@ -10,5 +10,3 @@ app.config(function($routeProvider){
         redirectTo: '/'
     });
 });//end
-
-
