@@ -1,4 +1,13 @@
-img
+/*Navbar*/
+
+.navbar img
+{
+    height: 90px;
+    width: 200px;
+}
+
+/*Logo*/
+.logo img
 {
     height: 190px;
     width: 320px;
@@ -7,7 +16,6 @@ img
     margin-top: 2.5%;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 /*Login*/
@@ -31,6 +39,7 @@ img
     left: 0;
     z-index: 1;
 }
+
 
 p.form-title
 {
@@ -133,16 +142,13 @@ form.login a:hover
     color: #2ecc71;
 }
 
-.pr-wrap
+/*Forgot Password*/
+
+.password-reset p
 {
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    display: none;
+    font-size: 29px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /*Modal*/
