@@ -6,7 +6,6 @@ var bloggerSchema = new Schema({
 	lastName: String,
 	email: String,
 	blogUrl: String,
-	password: String,
 	password: String
 	
 });

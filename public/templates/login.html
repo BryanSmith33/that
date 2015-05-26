@@ -62,7 +62,8 @@
                     <span ng-show="custom1"><input type="submit" ng-click="toggle1()" value="User" class="btn btn-success btn-sm" /></span>
                     <span ng-show="custom2"><input type="submit" ng-click="toggle2()" value="Blogger" class="btn btn-success btn-sm" /></span>
 
-                        <!--User Inpout-->                        
+                        <!--User Inpout-->
+                    <form>                        
                         <span ng-hide="custom2"><h1 ng-hide="userInput">User Sign Up</h1>
                         <input ng-hide="userInput" type="text" placeholder="First Name" required/>
                         <input ng-hide="userInput" type="text" placeholder="Last Name" required/>
@@ -71,8 +72,9 @@
                         <input ng-hide="userInput" ng-minlength=8 type="password" placeholder="Confirm Password" required/>
                         <button type="button" ng-hide="userInput" class="btn btn-default" data-dismiss="modal" ng-click="submit()">Submit</button>
                         </span>
-
-                        <!--Blogger Input-->                                                                
+                    </form>
+                        <!--Blogger Input-->
+                    <form>                                                             
                         <span ng-hide="custom1"><h1 ng-hide="bloggerInput">Blogger Sign Up</h1>
                         <input ng-hide="bloggerInput" type="text" placeholder="First Name" required/>
                         <input ng-hide="bloggerInput" type="password" placeholder="Last Name" required/>
@@ -82,6 +84,7 @@
                         <input ng-hide="bloggerInput" ng-minlength=8 type="password" placeholder=" Confirm Password" required/>
                         <button type="button" ng-hide="bloggerInput" class="btn btn-default" data-dismiss="modal">Submit</button>
                         </span>
+                    </form>
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

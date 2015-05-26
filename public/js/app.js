@@ -10,6 +10,14 @@ app.config(function($routeProvider){
 		templateUrl: '/templates/fp.html',
 		controller: 'fpCtrl'
 	})
+	.when('/home', {
+		templateUrl: '/templates/home.html',
+		controller: 'homeCtrl'
+	})
+		.when('/profile', {
+		templateUrl: '/templates/profile.html',
+		controller: 'profileCtrl'
+	})
 	.otherwise({
         redirectTo: '/'
     });

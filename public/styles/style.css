@@ -1,10 +1,90 @@
 /*Navbar*/
+.navbar
+{
+    background: white;
+    border: none;
+    z-index: 9999;
+    border: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    padding-bottom: 17px;
+}
 
 .navbar img
 {
-    height: 90px;
-    width: 200px;
+    height: 75px;
+    width: 150px;
+    position: absolute;
+    margin-top: 10px;
 }
+
+.navbar-form .form-control 
+{
+    display: inline-block;
+    width: 240px;
+    vertical-align: middle;
+}
+
+.form-control
+{
+    margin-top: 19px;
+    background: 0;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.btn
+{
+    margin-top: 15px;
+    height: 34px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #194719;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.btn:hover
+{
+    transition:0.5s ease;
+    background-color: #B3B9B3;
+    color: #194719;
+}
+
+.dropdown
+{
+    margin: 20 20 0 15;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form 
+{
+    border-color: transparent;
+}
+
+.navbar-nav .open .dropdown-menu 
+{
+    width: auto;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover 
+{
+    width: auto;
+    color: #194719;
+    background-color: #B3B9B3;
+}
+
 
 /*Logo*/
 .logo img
@@ -175,7 +255,7 @@ h4.modal-title, .modal-body h1
     outline: 0;
     cursor: pointer;
     background-color: #194719;
-    margin-left: 19%;
+    margin:0  45 0 45;
 }
 
 .modal-body input[type="submit"]:hover, .modal-footer button[type="button"]:hover, .modal-body button[type="button"]:hover
@@ -212,3 +292,28 @@ h4.modal-title, .modal-body h1
     letter-spacing: 1px;
     margin-bottom: 5px;
 }
+
+/*Home*/
+
+.container 
+{
+  width: 90%;
+  margin: 160px auto;
+  position: relative;
+  text-align:center;
+}
+
+div.r 
+{
+    display: inline-block;
+    margin: 20px;
+    height: 250px;
+    width: 250px;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+
+
+
