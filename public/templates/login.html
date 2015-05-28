@@ -25,27 +25,29 @@
                 <p class="form-title">
                     Welcome</p>
                 <form class="login">
-                <input ng-show="show" type="text" placeholder="Email" />
-                <input ng-show="show" type="password" placeholder="Password" />
-                <input type="submit" ng-click="show=true" value="Sign In" class="btn btn-success btn-sm" />
-                <input type="submit" value="Sign Up" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal"/>
-                <div ng-controller="loginCtrl">
-                </div>
-                <div class="remember-forgot">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" />
-                                    Remember Me
-                                </label>
+                    <div class="text-danger"><strong>{{error}}</strong></div>
+                    <input ng-show="show" type="email" ng-model="email" placeholder="Email" />
+                    <input ng-show="show" type="password" ng-model="password" placeholder="Password" />
+                    <button type="button" ng-show="show" class="btn btn-default" data-dismiss="modal" ng-click="clickLogin()">Submit</button>
+                    <input type="submit" ng-click="show=true" value="Sign In" class="btn btn-success btn-sm" />
+                    <input type="submit" value="Sign Up" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal"/>
+                    <div ng-controller="loginCtrl">
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" />
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 forgot-pass-content">
+                                <a href="/#/forgotPassword" class="forgot-pass">Forgot Password</a>
                             </div>
                         </div>
-                        <div class="col-md-6 forgot-pass-content">
-                            <a href="/#/forgotPassword" class="forgot-pass">Forgot Password</a>
-                        </div>
                     </div>
-                </div>
                 </form>
             </div>
         </div>
@@ -63,26 +65,28 @@
                     <span ng-show="custom2"><input type="submit" ng-click="toggle2()" value="Blogger" class="btn btn-success btn-sm" /></span>
 
                         <!--User Inpout-->
-                    <form>                        
+                    <form>
                         <span ng-hide="custom2"><h1 ng-hide="userInput">User Sign Up</h1>
-                        <input ng-hide="userInput" type="text" placeholder="First Name" required/>
-                        <input ng-hide="userInput" type="text" placeholder="Last Name" required/>
-                        <input ng-hide="userInput" ng-minlength=3 type="email" placeholder="Email" required/>
-                        <input ng-hide="userInput" ng-minlength=8 type="password" placeholder="Password" required/>
-                        <input ng-hide="userInput" ng-minlength=8 type="password" placeholder="Confirm Password" required/>
-                        <button type="button" ng-hide="userInput" class="btn btn-default" data-dismiss="modal" ng-click="submit()">Submit</button>
+                        <input ng-required="true" ng-hide="userInput" type="text" ng-model="firstName" placeholder="First Name"/>
+                        <input ng-required="true" ng-hide="userInput" type="text" ng-model="lastName" placeholder="Last Name"/>
+                        <input ng-required="true" ng-hide="userInput" type="email" ng-model="email" placeholder="Email"/>
+                        <input ng-required="true" ng-hide="userInput" type="password" ng-model="password" placeholder="Password"/>
+                        <input ng-required="true" ng-hide="userInput" type="password" ng-model="password2" placeholder="Confirm Password"/>
+                        <div class="text-danger"><strong>{{error}}</strong></div>
+                        <button type="button" ng-hide="userInput" class="btn btn-default" data-dismiss="modal" ng-click="userSignup()">Submit</button>
                         </span>
                     </form>
-                        <!--Blogger Input-->
-                    <form>                                                             
+                        <!--Blogger Input-->    
+                    <form>
                         <span ng-hide="custom1"><h1 ng-hide="bloggerInput">Blogger Sign Up</h1>
-                        <input ng-hide="bloggerInput" type="text" placeholder="First Name" required/>
-                        <input ng-hide="bloggerInput" type="password" placeholder="Last Name" required/>
-                        <input ng-hide="bloggerInput" ng-minlength=3 type="email" placeholder="Email" required/>
-                        <input ng-hide="bloggerInput" type="text" placeholder="Blog URL" required/>
-                        <input ng-hide="bloggerInput" ng-minlength=8 type="password" placeholder="Password" required/>
-                        <input ng-hide="bloggerInput" ng-minlength=8 type="password" placeholder=" Confirm Password" required/>
-                        <button type="button" ng-hide="bloggerInput" class="btn btn-default" data-dismiss="modal">Submit</button>
+                        <input ng-required="true" ng-hide="bloggerInput" type="text" ng-model="firstName" placeholder="First Name"/>
+                        <input ng-required="true" ng-hide="bloggerInput" type="text" ng-model="lastName" placeholder="Last Name"/>
+                        <input ng-required="true" ng-hide="bloggerInput" type="email" ng-model="email" placeholder="Email"/>
+                        <input ng-required="true" ng-hide="bloggerInput" type="text" ng-model="blogUrl" placeholder="Blog URL"/>
+                        <input ng-required="true" ng-hide="bloggerInput" type="password" ng-model="password" placeholder="Password"/>
+                        <input ng-required="true" ng-hide="bloggerInput" type="password" ng-model="password2" placeholder=" Confirm Password"/>
+                        <div class="text-danger"><strong>{{error}}</strong></div>
+                        <button type="button" ng-hide="bloggerInput" class="btn btn-default" data-dismiss="modal" ng-click="bloggerSignup()">Submit</button>
                         </span>
                     </form>
                 </div>

@@ -3,18 +3,23 @@
 {
     background: white;
     border: none;
-    z-index: 9999;
+    z-index: 999;
     border: 1px solid rgba(0,0,0,.15);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
     padding-bottom: 17px;
+    min-height: 93px;
 }
 
 .navbar img
 {
     height: 75px;
     width: 150px;
-    position: absolute;
-    margin-top: 10px;
+    margin-top: -6px;
+}
+
+.navbar-toggle:hover
+{
+    background-color: #B3B9B3;
 }
 
 .navbar-form .form-control 
@@ -38,7 +43,7 @@
 .btn
 {
     margin-top: 15px;
-    height: 34px;
+    height: 35px;
     font-size: 13px;
     text-transform: uppercase;
     font-weight: 500;
@@ -78,11 +83,17 @@
     border-radius: 4px;
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
+
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover 
 {
     width: auto;
     color: #194719;
     background-color: #B3B9B3;
+}
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse 
+{
+  max-height: 390px;
 }
 
 
@@ -139,7 +150,7 @@ form
     margin: 0 auto;
 }
 
-form.login input[type="text"], form.login input[type="password"], form.login input[type="placeholder"]
+form.login input[type="email"], form.login input[type="password"], form.login input[type="placeholder"], form.text-danger
 {
     width: 100%;
     margin: 0;
@@ -255,7 +266,7 @@ h4.modal-title, .modal-body h1
     outline: 0;
     cursor: pointer;
     background-color: #194719;
-    margin:0  45 0 45;
+    margin: 10 40 10 98;
 }
 
 .modal-body input[type="submit"]:hover, .modal-footer button[type="button"]:hover, .modal-body button[type="button"]:hover
@@ -295,7 +306,7 @@ h4.modal-title, .modal-body h1
 
 /*Home*/
 
-.container 
+.container-home 
 {
   width: 90%;
   margin: 160px auto;
