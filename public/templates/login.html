@@ -65,28 +65,28 @@
                     <span ng-show="custom2"><input type="submit" ng-click="toggle2()" value="Blogger" class="btn btn-success btn-sm" /></span>
 
                         <!--User Inpout-->
-                    <form>
+                    <form name="userForm">
                         <span ng-hide="custom2"><h1 ng-hide="userInput">User Sign Up</h1>
-                        <input ng-required="true" ng-hide="userInput" type="text" ng-model="firstName" placeholder="First Name"/>
-                        <input ng-required="true" ng-hide="userInput" type="text" ng-model="lastName" placeholder="Last Name"/>
-                        <input ng-required="true" ng-hide="userInput" type="email" ng-model="email" placeholder="Email"/>
-                        <input ng-required="true" ng-hide="userInput" type="password" ng-model="password" placeholder="Password"/>
-                        <input ng-required="true" ng-hide="userInput" type="password" ng-model="password2" placeholder="Confirm Password"/>
+                        <input name ="firstname" ng-hide="userInput" type="text" ng-model="firstName" placeholder="First Name" required/>
+                        <input ng-hide="userInput" type="text" ng-model="lastName" placeholder="Last Name" required/>
+                        <input ng-hide="userInput" type="email" ng-model="email" placeholder="Email" required/>
+                        <input ng-hide="userInput" type="password" ng-model="password" placeholder="Password" required/>
+                        <input ng-hide="userInput" type="password" ng-model="password2" placeholder="Confirm Password" required/>
                         <div class="text-danger"><strong>{{error}}</strong></div>
-                        <button type="button" ng-hide="userInput" class="btn btn-default" data-dismiss="modal" ng-click="userSignup()">Submit</button>
+                        <button ng-disabled="userForm.$invalid" type="button" ng-hide="userInput" class="btn btn-default" data-dismiss="modal" ng-click="userSignup()">Submit</button>
                         </span>
                     </form>
                         <!--Blogger Input-->    
-                    <form>
+                    <form name="bloggerForm">
                         <span ng-hide="custom1"><h1 ng-hide="bloggerInput">Blogger Sign Up</h1>
-                        <input ng-required="true" ng-hide="bloggerInput" type="text" ng-model="firstName" placeholder="First Name"/>
-                        <input ng-required="true" ng-hide="bloggerInput" type="text" ng-model="lastName" placeholder="Last Name"/>
-                        <input ng-required="true" ng-hide="bloggerInput" type="email" ng-model="email" placeholder="Email"/>
-                        <input ng-required="true" ng-hide="bloggerInput" type="text" ng-model="blogUrl" placeholder="Blog URL"/>
-                        <input ng-required="true" ng-hide="bloggerInput" type="password" ng-model="password" placeholder="Password"/>
-                        <input ng-required="true" ng-hide="bloggerInput" type="password" ng-model="password2" placeholder=" Confirm Password"/>
+                        <input ng-hide="bloggerInput" type="text" ng-model="firstName" placeholder="First Name" required/>
+                        <input ng-hide="bloggerInput" type="text" ng-model="lastName" placeholder="Last Name" required/>
+                        <input ng-hide="bloggerInput" type="email" ng-model="email" placeholder="Email" required/>
+                        <input name="url" ng-hide="bloggerInput" type="text" ng-model="blogUrl" placeholder="Blog URL" required/>
+                        <input ng-hide="bloggerInput" type="password" ng-model="password" placeholder="Password" required/>
+                        <input ng-hide="bloggerInput" type="password" ng-model="password2" placeholder=" Confirm Password" required/>
                         <div class="text-danger"><strong>{{error}}</strong></div>
-                        <button type="button" ng-hide="bloggerInput" class="btn btn-default" data-dismiss="modal" ng-click="bloggerSignup()">Submit</button>
+                        <button ng-disabled="bloggerForm.$invalid" type="button" ng-hide="bloggerInput" class="btn btn-default" data-dismiss="modal" ng-click="bloggerSignup()">Submit</button>
                         </span>
                     </form>
                 </div>

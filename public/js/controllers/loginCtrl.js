@@ -9,6 +9,8 @@ angular.module('blog-hopper').controller('loginCtrl', function($scope, $location
             $scope.custom1 = !$scope.custom1;
         };
 
+        $scope.name = 'World';
+
         /*Log In*/
 		$scope.clickLogin = function() {
 			usersService.login($scope.email, $scope.password).then(function() {
@@ -22,7 +24,7 @@ angular.module('blog-hopper').controller('loginCtrl', function($scope, $location
 		/*Sign Up*/
 		$scope.userSignup = function() {
 			if ($scope.password !== $scope.password2) {
-				$scope.error = "Passwords don't match match.";
+				$scope.error = "Passwords don't match.";
 				return;
 			}
 			usersService.signup($scope.email, $scope.password, $scope.firstName, $scope.lastName).then(function(new_user) {
@@ -34,8 +36,12 @@ angular.module('blog-hopper').controller('loginCtrl', function($scope, $location
 		};
 
 		$scope.bloggerSignup = function() {
+			if ($scope.blogUrl === "") {
+				$scope.error = "Please Enter Blog Url";
+				return;
+			}
 			if ($scope.password !== $scope.password2) {
-				$scope.error = "Passwords don't match match.";
+				$scope.error = "Passwords don't match.";
 				return;
 			}
 			bloggersService.signup($scope.email, $scope.password, $scope.firstName, $scope.lastName, $scope.blogUrl).then(function(new_blogger) {

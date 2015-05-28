@@ -24,17 +24,21 @@ userSchema.pre('save', function(next) {
 	});
 });
 
+// checking if password is valid
 userSchema.methods.verifyPassword = function(password) {
-	console.log('get here')
+	console.log('get here to verifyPassword')
 	var deferred = q.defer();
 	var user = this;
 	bcrypt.compare(password, user.password, function(err, res) {
 		if (err) {
-			deferred.resolve(false);
+			console.log('err', err);
+			deferred.resolve(err);
 		}
-		deferred.resolve(true);
+		console.log(res);
+		deferred.resolve(res);
 	});
 	return deferred.promise;
+	console.log('password verified')
 };
 
 module.exports = mongoose.model('User', userSchema);
