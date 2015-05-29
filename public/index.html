@@ -36,13 +36,13 @@
     <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown dropdown-right">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{firstName}}<span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{user.firstName}}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Profile</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Settings</a></li>
             <li class="divider"></li>
-            <li><a href="#">Log Out</a></li>
+            <li><a href="/api/auth/logout">Log Out</a></li>
           </ul>
         </li>
       </ul>
