@@ -24,7 +24,7 @@
             <div class="wrap">
                 <p class="form-title">
                     Welcome</p>
-                <form class="login">
+                <form name ="loginForm" class="login">
                     <div class="text-danger"><strong>{{error}}</strong></div>
                     <input ng-show="show" type="email" ng-model="email" placeholder="Email" />
                     <input ng-show="show" type="password" ng-model="password" placeholder="Password" />
@@ -86,7 +86,7 @@
                         <input ng-hide="bloggerInput" type="password" ng-model="password" placeholder="Password" required/>
                         <input ng-hide="bloggerInput" type="password" ng-model="password2" placeholder=" Confirm Password" required/>
                         <div class="text-danger"><strong>{{error}}</strong></div>
-                        <button ng-disabled="bloggerForm.$invalid" type="button" ng-hide="bloggerInput" class="btn btn-default" data-dismiss="modal" ng-click="bloggerSignup()">Submit</button>
+                        <button ng-disabled="bloggerForm.$invalid" type="button" ng-hide="bloggerInput" class="btn btn-default" data-dismiss="modal" ng-click="userSignup()">Submit</button>
                         </span>
                     </form>
                 </div>

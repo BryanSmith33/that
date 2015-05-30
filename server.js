@@ -7,15 +7,13 @@ var flash    = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('./api/models/user');
-var Blogger = require('./api/models/blogger');
-var Blog = require('./api/models/blog')
 
 
 mongoose.connect('mongodb://localhost/personalProject');
 
 
 // User
-passport.use(new LocalStrategy({
+passport.use('local', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
         passwordField : 'password',
@@ -40,6 +38,8 @@ passport.use(new LocalStrategy({
         });
 
     }));
+
+
 
 passport.serializeUser(function(user, done) {
   done(null, user._id);
@@ -94,24 +94,16 @@ app.post('/api/users', function(req, res) {
 });
 
 //log in
-app.post('/api/users/auth', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
+app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {
 	return res.json({message: "you logged in"});
 });
 
 //log off
 app.get('/api/auth/logout', function(req, res) {
 	req.logout();
-	return res.redirect('/#login');
+	return res.redirect('/#/login');
 });
 
-app.get('/api/users', requireAuth, function(req, res) {
-	User
-	.find()
-	.populate('favorite_blogs')
-	.exec().then(function(users) {
-		return res.json(users);
-	});
-});
 
 app.delete('/api/users/:userId', requireAuth, function(req, res) {
 	User.remove({ _id: req.params.userId }, function(err) {
@@ -123,105 +115,8 @@ app.delete('/api/users/:userId', requireAuth, function(req, res) {
 });
 
 
-//Blogger
-
-//sign up
-app.post('/api/bloggers', function(req, res) {
-	Blogger.findOne({ email: req.body.email }).exec().then(function(blogger) {
-		//if we found a blogger, it's a duplicate
-		if (blogger) {
-			return res.status(400).json({message: "Email already exists."});
-		}
-		//if the blogger's password is too short ...
-		if (req.body.password.length <= 8) {
-			return res.status(400).json({message: "Password must be at least eight characters."});
-		}
-		//otherwise, create the blogger
-		var blogger = new Blogger(req.body);
-		blogger.save(function(err, new_blogger) {
-			if (err) {
-				console.log("can't create blogger", err);
-			}
-			res.json(new_blogger);
-		});
-	})
-});
-
-//log in
-app.post('/api/bloggers/auth', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
-	return res.json({message: "you logged in"});
-});
-
-app.get('/api/bloggers', requireAuth, function(req, res) {
-	Blogger
-	.find()
-	.populate('favorite_blogs')
-	.exec().then(function(bloggers) {
-		return res.json(bloggers);
-	});
-});
-
-app.put('/api/bloggers/:blogerId', requireAuth, function(req, res) {
-	Blogger.update(req.body, function(err) {
-		if (err) {
-			console.log("can't update blogger", err);
-		}
-		return res.json(req.body);
-	});
-});
-
-app.delete('/api/bloggers/:bloggerId', requireAuth, function(req, res) {
-	Blogger.remove({ _id: req.params.bloggerId }, function(err) {
-		if (err) {
-			console.log("can't delete blogger", err);
-		}
-		res.status(200).end();
-	});
-});
-
-//blogs
-
-app.post('/api/blogs', requireAuth, function(req, res) {
-	var blog = new Blog(req.body);
-	blog.save(function(err, new_blog) {
-		if (err) {
-			console.log("can't create blog", err);
-		}
-		res.json(new_blog);
-	});
-});
-
-app.get('/api/blogs', requireAuth, function(req, res) {
-	Blog
-	.find()
-	.sort('state')
-	.limit(10)
-	.skip(req.query.skip || 0)
-	.exec().then(function(blogs) {
-		return res.json(blogs);
-	});
-});
-
-app.put('/api/blogs/:blogId', requireAuth, function(req, res) {
-	Blog.update(req.body, function(err) {
-		if (err) {
-			console.log("can't update blog", err);
-		}
-		return res.json(req.body);
-	});
-});
-
-app.delete('/api/blogs/:blogId', requireAuth, function(req, res) {
-	Blog.remove({ _id: req.params.blogId }, function(err) {
-		if (err) {
-			console.log("can't delete blog", err);
-		}
-		res.status(200).end();
-	});
-});
 
 var port = 9891;
 app.listen(port, function(){
 	console.log('listening on port ' + port);
 });
-

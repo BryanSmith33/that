@@ -7,8 +7,8 @@ var userSchema = new Schema({
 	firstName: String,
 	lastName: String,
 	email: { type: String, unique: true},
+	blogUrl: { type: String, unique: true},
 	password: String
-	
 });
 
 //pre('save') is mongoose middleware that runs before every user is created

@@ -1,6 +1,6 @@
 angular.module('blog-hopper').service('usersService', function($http, $q) {
 
-	this.signup = function(email, password, firstName, lastName) {
+	this.signup = function(email, password, firstName, lastName, blogUrl) {
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',
@@ -9,7 +9,8 @@ angular.module('blog-hopper').service('usersService', function($http, $q) {
 				email: email,
 				password: password,
 				firstName: firstName,
-				lastName: lastName
+				lastName: lastName,
+				blogUrl: blogUrl
 			}
 		}).then(function(res) {
 			deferred.resolve(res.data);
