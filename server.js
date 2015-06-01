@@ -7,6 +7,7 @@ var flash    = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('./api/models/user');
+var Blog = require('./api/models/blog');
 
 
 mongoose.connect('mongodb://localhost/personalProject');
@@ -104,6 +105,43 @@ app.get('/api/auth/logout', function(req, res) {
 	return res.redirect('/#/login');
 });
 
+app.post('/api/users/me/blogss', requireAuth, function(req, res) {
+	//find blog
+	Blog.findOne({ _id: req.body._id }).exec().then(function(blog) {
+		if (!blog) {
+			return res.status(404).end();
+		}
+		//update the user with the blog
+		User.findOne({ _id: req.user._id }).exec().then(function(user) {
+			user.blogss.push(blog);
+			user.save(function(err) {
+				if (err) {
+					console.log("can't add blog to user");
+				}
+				return res.json(user);
+			});
+		});
+	});
+});
+
+app.get('/api/users/me', requireAuth, function(req, res) {
+	User
+	.findOne({_id: req.user.id})
+	.populate('blogs')
+	.exec().then(function(user) {
+		return res.json(user);
+	});
+});
+
+app.get('/api/users', requireAuth, function(req, res) {
+	User
+	.find()
+	.populate('blogs')
+	.exec().then(function(users) {
+		return res.json(users);
+	});
+});
+
 
 app.delete('/api/users/:userId', requireAuth, function(req, res) {
 	User.remove({ _id: req.params.userId }, function(err) {
@@ -114,7 +152,44 @@ app.delete('/api/users/:userId', requireAuth, function(req, res) {
 	});
 });
 
+app.post('/api/blogs', requireAuth, function(req, res) {
+	var blog = new Blog(req.body);
+	blog.save(function(err, new_blog) {
+		if (err) {
+			console.log("can't create blog", err);
+		}
+		res.json(new_blog);
+	});
+});
 
+app.get('/api/blogs', requireAuth, function(req, res) {
+	Blog
+	.find()
+	.sort('state')
+	.limit(10)
+	.skip(req.query.skip || 0)
+	.exec().then(function(blogs) {
+		return res.json(blogs);
+	});
+});
+
+app.put('/api/blogs/:blogId', requireAuth, function(req, res) {
+	Blog.update(req.body, function(err) {
+		if (err) {
+			console.log("can't update blog", err);
+		}
+		return res.json(req.body);
+	});
+});
+
+app.delete('/api/blogs/:blogId', requireAuth, function(req, res) {
+	Blog.remove({ _id: req.params.blogId }, function(err) {
+		if (err) {
+			console.log("can't delete blog", err);
+		}
+		res.status(200).end();
+	});
+});
 
 var port = 9891;
 app.listen(port, function(){

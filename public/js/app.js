@@ -1,6 +1,6 @@
 var app = angular.module('blog-hopper', ['ngRoute']);
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $httpProvider){
 	$routeProvider
 	.when('/', {
 		templateUrl: '/templates/login.html',
@@ -25,4 +25,14 @@ app.config(function($routeProvider){
 	.otherwise({
         redirectTo: '/'
     });
+    $httpProvider.interceptors.push(function($location) {
+		return {
+			'responseError': function(res) {
+				if (res.status === 401) {
+					$location.path('/login');
+				}
+				return res;
+			}
+		}
+	});
 });//end
